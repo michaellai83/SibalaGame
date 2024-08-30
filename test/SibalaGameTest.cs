@@ -117,5 +117,12 @@ namespace SibalaGame_20240830.test
             var actual = _game.ShowResult("Black: 2 5 1 5  White: 1 3 5 2");
             actual.Should().Be("Black win. - with normal point: 3");
         }
+
+        [Test]
+        public void A16_NoPoint_NormalPoint_White_Win()
+        {
+            var actual = _game.ShowResult("Black: 3 3 3 6  White: 6 3 6 3");
+            actual.Should().Be("White win. - with normal point: 12");
+        }
     }
 }
