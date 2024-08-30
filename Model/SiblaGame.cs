@@ -30,13 +30,17 @@
                 return "Tie.";
             }
 
-            if (IsAllOfAKind(winner))
-            {
-                return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[0].Output}";
-            }
+            return IsAllOfAKind(winner) ? ResultForAllOfAKind(winner) : ResultForNormalPoint(winner);
+        }
 
-
+        private static string ResultForNormalPoint(Player winner)
+        {
             return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[2].Value + winner.Dices[3].Value}";
+        }
+
+        private static string ResultForAllOfAKind(Player winner)
+        {
+            return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[0].Output}";
         }
 
         private Player DetermineWinner(Player player1, Player player2)
@@ -46,10 +50,16 @@
                 return CompareAllOfAKind(player1, player2);
             }
 
-            return CompareSumAndHighestDice(player1, player2);
+            if (IsNormalPoint(player1) || IsNormalPoint(player2))
+            {
+                return CompareNormalPoint(player1, player2);
+            }
+
+            return null;
         }
 
         private bool IsAllOfAKind(Player player) => player.Category == "all of a kind";
+        private bool IsNormalPoint(Player player) => player.Category == "normal point";
 
         private Player CompareAllOfAKind(Player player1, Player player2)
         {
@@ -68,7 +78,7 @@
             return player2.Category == "all of a kind" ? player2 : player1;
         }
 
-        private Player CompareSumAndHighestDice(Player player1, Player player2)
+        private Player CompareNormalPoint(Player player1, Player player2)
         {
             var player1Sum = player1.Dices[2].Value + player1.Dices[3].Value;
             var player2Sum = player2.Dices[2].Value + player2.Dices[3].Value;
