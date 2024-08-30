@@ -1,5 +1,5 @@
 using FluentAssertions;
-using SibalaGame_20240830.@class;
+using SibalaGame_20240830.Model;
 
 namespace SibalaGame_20240830.test
 {
