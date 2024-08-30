@@ -25,7 +25,7 @@
 
             var winner = player1;
 
-            if (player1.Category == "all of a kind")
+            if (player1.Category == "all of a kind" || player2.Category == "all of a kind")
             {
                 if (player1.Dices[0].Value == player2.Dices[0].Value)
                 {
@@ -40,14 +40,17 @@
                 return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[0].Output}";
             }
 
-            if (player1.Dices[2].Value + player1.Dices[3].Value < player2.Dices[2].Value + player2.Dices[3].Value)
-            {
-                winner = player2;
-            }
+            var player1Sum = player1.Dices[2].Value + player1.Dices[3].Value;
+            var player2Sum = player2.Dices[2].Value + player2.Dices[3].Value;
             
-            if(player1.Dices[2].Value + player1.Dices[3].Value == player2.Dices[2].Value + player2.Dices[3].Value)
+            if(player1Sum == player2Sum)
             {
                 return "Tie.";
+            }
+
+            if (player2Sum > player1Sum)
+            {
+                winner = player2;
             }
 
             return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[2].Value + winner.Dices[3].Value}";
