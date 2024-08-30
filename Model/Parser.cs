@@ -1,7 +1,4 @@
-﻿using NUnit.Framework;
-using System.Numerics;
-
-namespace SibalaGame_20240830.Model
+﻿namespace SibalaGame_20240830.Model
 {
     public class Parser
     {
@@ -54,7 +51,11 @@ namespace SibalaGame_20240830.Model
                 {
                     Value = int.Parse(s),
                     Output = s
-                }).ToList();
+                }).GroupBy(d => d.Value)
+                  .OrderByDescending(g => g.Count())
+                  .ThenBy(g => g.Key)
+                  .SelectMany(g => g)
+                  .ToList();
         }
 
         private static string GetPlayerName(string playerSection)
