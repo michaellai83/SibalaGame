@@ -1,3 +1,5 @@
+using FluentAssertions;
+
 namespace SibalaGame_20240830
 {
     public class SibalaGameTest
@@ -8,9 +10,11 @@ namespace SibalaGame_20240830
         }
 
         [Test]
-        public void Test1()
+        public void A01_Both_AllOfAKind()
         {
-            Assert.Pass();
+            var game = new SiblaGame();
+            var actual = game.ShowResult("Black: 5 5 5 5  White: 2 2 2 2");
+            actual.Should().Be("Black win. - with all of a kind: 5");
         }
     }
 }
