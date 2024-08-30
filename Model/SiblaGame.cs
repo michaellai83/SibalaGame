@@ -1,6 +1,6 @@
 ﻿namespace SibalaGame_20240830.Model
 {
-    internal class SiblaGame
+    public class SiblaGame
     {
         public SiblaGame()
         {
@@ -8,7 +8,15 @@
 
         public string ShowResult(string input)
         {
-            return "Black win. - with all of a kind: 5";
+            var parser = new Parser();
+            var players = parser.Parse(input);
+
+
+            var winnerName = players[0].Name;
+            var winnerCategory = players[0].Category;
+            var winnerOutput = players[0].Dices[0].Output;
+
+            return $"{winnerName} win. - with {winnerCategory}: {winnerOutput}";
         }
     }
 }

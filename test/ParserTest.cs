@@ -23,6 +23,7 @@ namespace SibalaGame_20240830.test
                             new Dice{Value = 5, Output = "5"},
                             new Dice{Value = 5, Output = "5"},
                         },
+                        Category = "all of a kind",
                     },
                     new Player
                     {
@@ -34,6 +35,7 @@ namespace SibalaGame_20240830.test
                             new Dice{Value = 2, Output = "2"},
                             new Dice{Value = 2, Output = "2"},
                         },
+                        Category = "all of a kind",
                     }
                 });
         }
