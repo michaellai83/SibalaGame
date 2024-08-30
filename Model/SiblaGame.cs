@@ -21,7 +21,7 @@
                 return "Tie.";
             }
 
-            if (player2.Dices[0].Value > player1.Dices[0].Value && player1.Dices[0].Value != 4)
+            if (player2.Dices[0].Value > player1.Dices[0].Value && player1.Dices[0].Value != 4 || player2.Dices[0].Value == 4)
             {
                 winner = player2;
             }
