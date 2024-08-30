@@ -73,12 +73,17 @@
             var player1Sum = player1.Dices[2].Value + player1.Dices[3].Value;
             var player2Sum = player2.Dices[2].Value + player2.Dices[3].Value;
 
-            if (player1Sum == player2Sum)
+            if (player1.Category == player2.Category)
             {
-                return player2.Dices[3].Value > player1.Dices[3].Value ? player2 : null; // Tie if player1.Dices[3].Value >= player2.Dices[3].Value
+                if (player1Sum == player2Sum)
+                {
+                    return player2.Dices[3].Value > player1.Dices[3].Value ? player2 : null; // Tie if player1.Dices[3].Value >= player2.Dices[3].Value
+                }
+
+                return player2Sum > player1Sum ? player2 : player1;
             }
 
-            return player2Sum > player1Sum ? player2 : player1;
+            return player2.Category == "normal point" ? player2 : player1;
         }
     }
 }
