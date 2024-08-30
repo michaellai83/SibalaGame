@@ -40,19 +40,10 @@
                 return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[0].Output}";
             }
 
-            player1.Dices = player1.Dices.GroupBy(d => d.Value)
-                                         .OrderByDescending(g => g.Count())
-                                         .ThenBy(g => g.Key)
-                                         .SelectMany(g => g)
-                                         .ToList();
-
-            player2.Dices = player2.Dices.GroupBy(d => d.Value)
-                                         .OrderByDescending(g => g.Count())
-                                         .ThenBy(g => g.Key)
-                                         .SelectMany(g => g)
-                                         .ToList();
-
-
+            if (player1.Dices[2].Value + player1.Dices[3].Value < player2.Dices[2].Value + player2.Dices[3].Value)
+            {
+                winner = player2;
+            } 
 
             return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[2].Value + winner.Dices[3].Value}";
         }
