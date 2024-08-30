@@ -54,5 +54,12 @@ namespace SibalaGame_20240830.test
             var actual = _game.ShowResult("Black: 1 1 1 1  White: 4 4 4 4");
             actual.Should().Be("Black win. - with all of a kind: 1");
         }
+
+        [Test]
+        public void A07_Both_AllOfAKind_White_Win_4VS1()
+        {
+            var actual = _game.ShowResult("Black: 4 4 4 4  White: 1 1 1 1");
+            actual.Should().Be("White win. - with all of a kind: 1");
+        }
     }
 }
