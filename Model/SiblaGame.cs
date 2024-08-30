@@ -14,26 +14,19 @@
             var player1 = players[0];
             var player2 = players[1];
 
-            var player1DicesPoint = player1.Dices[0].Value;
-            var player2DicesPoint = player2.Dices[0].Value;
+            var winner = player1;
 
-            var winnerName = player1.Name;
-            var winnerCategory = player1.Category;
-            var winnerOutput = player1.Dices[0].Output;
-
-            if(player1DicesPoint == player2DicesPoint)
+            if (player1.Dices[0].Value == player2.Dices[0].Value)
             {
                 return "Tie.";
             }
 
-            if (player2DicesPoint >  player1DicesPoint)
+            if (player2.Dices[0].Value > player1.Dices[0].Value)
             {
-                winnerName = player2.Name;
-                winnerCategory = player2.Category;
-                winnerOutput = player2.Dices[0].Output;
+                winner = player2;
             }
-            
-            return $"{winnerName} win. - with {winnerCategory}: {winnerOutput}";
+
+            return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[0].Output}";
         }
     }
 }
