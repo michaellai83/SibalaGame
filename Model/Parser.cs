@@ -31,7 +31,7 @@ namespace SibalaGame_20240830.Model
 
         private static string GetGameCategory(List<Dice> dices)
         {
-            var gameCategory = "all of a kind";
+            var gameCategory = "normal point";
 
             if (dices.All(d => d.Value == dices[0].Value))
             {

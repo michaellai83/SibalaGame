@@ -61,5 +61,12 @@ namespace SibalaGame_20240830.test
             var actual = _game.ShowResult("Black: 4 4 4 4  White: 1 1 1 1");
             actual.Should().Be("White win. - with all of a kind: 1");
         }
+
+        [Test]
+        public void A08_Both_NormalPoint_Black_Win()
+        {
+            var actual = _game.ShowResult("Black: 2 6 2 3  White: 5 3 5 4");
+            actual.Should().Be("Black win. - with normal point: 9");
+        }
     }
 }

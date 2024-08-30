@@ -25,17 +25,36 @@
 
             var winner = player1;
 
-            if (player1.Dices[0].Value == player2.Dices[0].Value)
+            if (player1.Category == "all of a kind")
             {
-                return "Tie.";
+                if (player1.Dices[0].Value == player2.Dices[0].Value)
+                {
+                    return "Tie.";
+                }
+
+                if (_AllOfAKindLookup[player2.Dices[0].Value] > _AllOfAKindLookup[player1.Dices[0].Value])
+                {
+                    winner = player2;
+                }
+
+                return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[0].Output}";
             }
 
-            if (_AllOfAKindLookup[player2.Dices[0].Value] > _AllOfAKindLookup[player1.Dices[0].Value])
-            {
-                winner = player2;
-            }
+            player1.Dices = player1.Dices.GroupBy(d => d.Value)
+                                         .OrderByDescending(g => g.Count())
+                                         .ThenBy(g => g.Key)
+                                         .SelectMany(g => g)
+                                         .ToList();
 
-            return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[0].Output}";
+            player2.Dices = player2.Dices.GroupBy(d => d.Value)
+                                         .OrderByDescending(g => g.Count())
+                                         .ThenBy(g => g.Key)
+                                         .SelectMany(g => g)
+                                         .ToList();
+
+
+
+            return $"{winner.Name} win. - with {winner.Category}: {winner.Dices[2].Value + winner.Dices[3].Value}";
         }
     }
 }
