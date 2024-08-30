@@ -45,7 +45,14 @@
             
             if(player1Sum == player2Sum)
             {
-                return "Tie.";
+                if (player2.Dices[3].Value > player1.Dices[3].Value)
+                {
+                    winner = player2;
+                }
+                else
+                {
+                    return "Tie.";
+                }                
             }
 
             if (player2Sum > player1Sum)
