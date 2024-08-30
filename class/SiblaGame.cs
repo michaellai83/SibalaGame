@@ -1,5 +1,4 @@
-﻿
-namespace SibalaGame_20240830
+﻿namespace SibalaGame_20240830.@class
 {
     internal class SiblaGame
     {
