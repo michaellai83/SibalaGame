@@ -2,6 +2,15 @@
 {
     public class SiblaGame
     {
+        public Dictionary<int, int> _AllOfAKindLookup = new Dictionary<int, int>
+        {
+            {1,6},
+            {4,5},
+            {6,4},
+            {5,3},
+            {3,2},
+            {2,1},
+        };
         public SiblaGame()
         {
         }
@@ -21,7 +30,7 @@
                 return "Tie.";
             }
 
-            if (player2.Dices[0].Value > player1.Dices[0].Value && player1.Dices[0].Value != 4 || player2.Dices[0].Value == 4)
+            if (_AllOfAKindLookup[player2.Dices[0].Value] > _AllOfAKindLookup[player1.Dices[0].Value])
             {
                 winner = player2;
             }
